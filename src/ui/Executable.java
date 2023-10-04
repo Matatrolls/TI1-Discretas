@@ -2,7 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-import model.Controller;
+import model.*;
 
 public class Executable {
 
@@ -19,10 +19,8 @@ public class Executable {
 	 * The main function creates an instance of the Executable class and calls its menu method.
 	 */
 	public static void main(String[] args) {
-
 		Executable ejecutable = new Executable();
 		ejecutable.menu();
-
 	}
 //|||||||||||||||||||||||||||||||||||MENUS||||||||||||||||||||||||||||||
 
@@ -30,6 +28,7 @@ public class Executable {
 	 * This function displays a menu with options for managing users, products, and uses, and allows the
 	 * user to select an option or exit the menu.
 	 */
+
 	public void menu() {
 		boolean indicator=false;
 	
