@@ -1,4 +1,4 @@
-package model;
+package datastructures;
 
 import java.util.NoSuchElementException;
 
