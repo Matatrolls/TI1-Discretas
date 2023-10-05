@@ -1,8 +1,6 @@
-package model;
+package datastructures;
 
-import java.lang.reflect.Array;
-
-public class HashTable<K, V> implements IHashTable<K, V>{
+public class HashTable<K, V> implements IHashTable<K, V> {
 
 // manera de crear un arreglo generico, o una manera de hacerlo.
     private HashNode<K, V>[] table;
