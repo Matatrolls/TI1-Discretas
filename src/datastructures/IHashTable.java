@@ -1,4 +1,4 @@
-package model;
+package datastructures;
 
 public interface IHashTable<K, V> {
     public boolean add(K key, V value);

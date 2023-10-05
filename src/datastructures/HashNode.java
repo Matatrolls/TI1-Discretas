@@ -1,4 +1,4 @@
-package model;
+package datastructures;
 
 public class HashNode<K, V> {
     private K key;
