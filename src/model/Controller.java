@@ -1,6 +1,11 @@
 package model;
 import datastructures.*;
 public class Controller {
+
+    public Controller(){
+        
+    }
+
     public void undo() {
     }
 
