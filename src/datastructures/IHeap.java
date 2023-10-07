@@ -16,7 +16,10 @@ public interface IHeap<T> {
 
     T extractMax();
 
-    void maxHeapify(ArrayList<T> heap, int currentIndex);
+    void maxHeapify(int currentIndex);
 
-    void buildMaxHeap(ArrayList<T> heap);
+    void buildMaxHeap();
+    T heapMaximum();
+    void heapIncreaseKey(int index);
+
 }
