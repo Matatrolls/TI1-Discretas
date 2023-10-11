@@ -2,12 +2,12 @@ package ui;
 
 import java.util.Scanner;
 
-import model.*;
+import model.Controller;
 
 public class Executable {
 
-	private Scanner input;
-	private Controller controller;
+	private final Scanner input;
+	private final Controller controller;
 
 	public Executable() {
 
@@ -45,7 +45,7 @@ public class Executable {
 			switch (option) {
 
 				case 1:
-                    storeTaskAndReminders();
+                    storeTasks();
 				break;
 
 				case 2:
@@ -74,14 +74,31 @@ public class Executable {
 	}
 
     public void undo() {
+		//buffer cleanse
+		input.nextLine();
         controller.undo();
     }
 
     public void changeTaskPriority() {
+		//buffer cleanse
+		input.nextLine();
         controller.changeTaskPriority();
     }
 
-    public void storeTaskAndReminders() {
-        controller.storeTaskAndReminders();
+    public void storeTasks() {
+		//buffer cleanse
+		input.nextLine();
+		String title,description;
+		System.out.println("Please enter your Task Title");
+		title= input.nextLine();
+
+		
+
+		System.out.println("Please enter your Task Description");
+		description= input.nextLine();
+
+
+
+        controller.storeTasks();
     }
 }

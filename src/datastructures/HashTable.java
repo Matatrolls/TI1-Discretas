@@ -1,4 +1,4 @@
-package datastructures;
+package dataStructures;
 
 public class HashTable<K, V> implements IHashTable<K, V> {
 
@@ -9,8 +9,12 @@ public class HashTable<K, V> implements IHashTable<K, V> {
     // este nodo "deleted" es mi referencia para saber cuándo
     // o mejor dicho en qué posición he hecho una eliminación de un
     // elemento. (para no dejar en ese espacio un valor null).
+    
     private HashNode<K, V> deleted;
     private int size;
+
+
+
     private static final double KNUTH =  (Math.sqrt(5) - 1) / 2.0;
     private static final int RADIX_FACTOR = 128;
 
