@@ -1,4 +1,4 @@
-package datastructures;
+package dataStructures;
 
 public interface IQueue<T> {
 	// Returns true if queue is empty.

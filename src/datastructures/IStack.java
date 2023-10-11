@@ -1,4 +1,4 @@
-package datastructures;
+package dataStructures;
 
 // El elemento T debe ser comparable?
 public interface IStack<T> {

@@ -1,9 +1,20 @@
 package model;
-import datastructures.*;
+
+import dataStructures.*;
+import dataSorters.*;
+
+
 public class Controller {
 
+    private HashTable tasksStore;
+    private Queue taskQueue;
+    private MaxHeap lastAction;
+
     public Controller(){
-        
+        taskQueue = new Queue<>();
+        tasksStore = new HashTable<>( 100);
+        lastAction = new MaxHeap<>(tasksStore);
+
     }
 
     public void undo() {
@@ -12,6 +23,7 @@ public class Controller {
     public void changeTaskPriority() {
     }
 
-    public void storeTaskAndReminders() {
+    public void storeTasks() {
+        
     }
 }
