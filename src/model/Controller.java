@@ -13,7 +13,7 @@ public class Controller {
     public Controller(){
         taskQueue = new Queue<>();
         tasksStore = new HashTable<>( 100);
-        lastAction = new MaxHeap<>(tasksStore);
+        // lastAction; para el deshacer
 
     }
 
@@ -23,7 +23,9 @@ public class Controller {
     public void changeTaskPriority() {
     }
 
-    public void storeTasks() {
-        
+    public void storeTasks(String title, String description, String day, int priority) throws Exception{
+        Task temporalTask = new Task(title, description, priority, day);
+        tasksStore.add(title,temporalTask);
     }
+
 }

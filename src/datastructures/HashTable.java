@@ -1,5 +1,7 @@
 package dataStructures;
 
+import java.util.ArrayList;
+
 public class HashTable<K, V> implements IHashTable<K, V> {
 
 
@@ -27,8 +29,7 @@ public class HashTable<K, V> implements IHashTable<K, V> {
 
     private int hashFunction(K object) {
         // 1. saco el toString del objeto
-
-       // String info = object.toString();
+        // String info = object.toString();
         // 2. ese toString lo convierto a entero con lo que vimos de ASCII
         // long key = radix128Ascii(info);
         // como los valores estaban dando demasiado grandes, se tuvo que usar el metodo hashcode
@@ -55,7 +56,6 @@ public class HashTable<K, V> implements IHashTable<K, V> {
         int address = hashFunction(key);
         boolean result = false;
         HashNode<K, V> newNode = new HashNode<>(key, value);
-        System.out.println("resultado de la hash function: " + address);
         // CHAINING
         if (this.table[address] == null) {
             table[address] = newNode;
@@ -109,6 +109,11 @@ public class HashTable<K, V> implements IHashTable<K, V> {
             }
         }
         return result;
+    }
+
+
+    public int getSize() {
+        return size;
     }
 
 }
