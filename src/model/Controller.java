@@ -1,7 +1,6 @@
 package model;
 
 import dataStructures.*;
-import dataSorters.*;
 
 
 public class Controller {
@@ -23,9 +22,27 @@ public class Controller {
     public void changeTaskPriority() {
     }
 
-    public void storeTasks(String title, String description, String day, int priority) throws Exception{
-        Task temporalTask = new Task(title, description, priority, day);
-        tasksStore.add(title,temporalTask);
+    public void storeTasks(String title, String description, String limitDate, String priority,int priorityLvl) throws Exception{
+        if(priority.equals("Y")){
+            PriorityTask temporalPriorityTask = new PriorityTask(title, description, priority, limitDate,priorityLvl);
+            tasksStore.add(priority,temporalPriorityTask);
+        }
+        else{
+            Task temporalTask = new Task(title, description, priority, limitDate);
+            tasksStore.add(priority,temporalTask);
+        }
+
+    }
+
+    public String printAllTasks(){
+
+        String msg=tasksStore.print();
+        return msg;
+    }
+
+    public void testing() {
+        Task temporalTask = new Task("test title", "test description", "N", null);
+        tasksStore.add("N",temporalTask);
     }
 
 }

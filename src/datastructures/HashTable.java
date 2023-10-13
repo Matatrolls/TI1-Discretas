@@ -1,6 +1,5 @@
 package dataStructures;
 
-import java.util.ArrayList;
 
 public class HashTable<K, V> implements IHashTable<K, V> {
 
@@ -18,7 +17,7 @@ public class HashTable<K, V> implements IHashTable<K, V> {
 
 
     private static final double KNUTH =  (Math.sqrt(5) - 1) / 2.0;
-    private static final int RADIX_FACTOR = 128;
+    //private static final int RADIX_FACTOR = 128;
 
     // size == m
     public HashTable(int size){
@@ -39,6 +38,7 @@ public class HashTable<K, V> implements IHashTable<K, V> {
 
         return hash;
     }
+    /* 
     private long radix128Ascii(String str){
         long sum = 0;
         int radixIndicator = str.length() - 1;
@@ -49,15 +49,15 @@ public class HashTable<K, V> implements IHashTable<K, V> {
         }
         return sum;
     }
-
-    // se debe hacer testing
+    */
+    
     @Override
     public boolean add(K key, V value) {
         int address = hashFunction(key);
         boolean result = false;
         HashNode<K, V> newNode = new HashNode<>(key, value);
         // CHAINING
-        if (this.table[address] == null) {
+        if (this.table[address] == null || this.table[address] == deleted ){
             table[address] = newNode;
             result = true;
         }else{
@@ -67,6 +67,7 @@ public class HashTable<K, V> implements IHashTable<K, V> {
             newNode.setNext(current);
             result = true;
         }
+
         return result;
     }
 
@@ -104,16 +105,53 @@ public class HashTable<K, V> implements IHashTable<K, V> {
 
             }else {
 
-                this.table[address] = null;
+                this.table[address] = deleted;
 
             }
         }
         return result;
     }
 
+    public String print(){
+        String msg="";
+
+        if(this.table == null){
+            msg="There aren't task registered";
+        }
+        else{
+            for (int index = 0; index < table.length; index++) {
+                if(this.table[index]==null){
+
+                }else{
+
+                    print(this.table[index]);
+                }
+            }
+        }
+
+        return msg;
+    }
+
+    public String print(HashNode<K, V> current){
+        String msg="";
+
+        V  temp =current.getValue();
+        msg= temp.toString();
+        System.out.println(msg);
+
+        if(current.getNext()!= null){
+            print(current.getNext());
+        }
+        
+        return msg;
+    }
 
     public int getSize() {
         return size;
+    }
+
+    public HashNode<K, V>[] getTable(){
+        return table;
     }
 
 }

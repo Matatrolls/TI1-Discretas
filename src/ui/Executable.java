@@ -47,6 +47,8 @@ public class Executable {
 			System.out.println("2. Change tasks priority");
 			System.out.println("3. Undo");
 			System.out.println("4. View all tasks");
+			System.out.println("10. testeo");
+
 			System.out.println("0. Exit");
 
 			try {
@@ -78,6 +80,10 @@ public class Executable {
 					System.out.println("I missclicked sorry");
 					break;
 
+				case 10:
+					controller.testing();
+					break;
+
 				case 0:
 					System.out.println("Thanks for using TaskManager");
 					indicator = true;
@@ -91,12 +97,7 @@ public class Executable {
 	}
 
 	private void viewAllTask() {
-		//pendiente
-
-
-		System.out.println();
-		
-
+		System.out.println(	controller.printAllTasks());
 	}
 
 	public void undo() {
@@ -114,8 +115,9 @@ public class Executable {
 	public void storeTasks() {
 		// buffer cleanse
 		input.nextLine();
-		String title, description, limitDate;
-		int priority=0;
+		String title, description, limitDate,priority="N";
+		int priorityLvl=0;
+		
 		System.out.println("Please enter your Task Title");
 		title = input.nextLine();
 
@@ -126,17 +128,28 @@ public class Executable {
 		limitDate = input.nextLine();
 		// useless String because of changes in the integrator proyect
 
-		System.out.println("Please enter your priority from zero to *(zero its the lowest and default)");
+		System.out.println("Please enter if your task has priority or not: Y/N(Default N)");
+		
+		priority = input.nextLine().toUpperCase();
+		
+		
+		System.out.println("Please enter your priority from zero to 100(zero its the lowest and default)");
 		try {
-			priority = input.nextInt();
+			priorityLvl = input.nextInt();
+
+			if(priorityLvl >100 || priorityLvl<0){
+				priorityLvl=0;
+				System.out.println("Since the value was invalid it was set as default(zero)");
+
+			}
 		} catch (InputMismatchException e) {
 			System.out.println("An character was entered instead of an int");
-			System.exit(0);
-		}
-		
+			priorityLvl=0;
+			System.out.println("Since the value was invalid it was set as default(zero)");
+	}
 
 		try {
-			controller.storeTasks(title,description,limitDate,priority);
+			controller.storeTasks(title,description,limitDate,priority,priorityLvl);
 		} catch (Exception e) {
 			System.out.println("It wasn't possible to to add a new task");
 		}

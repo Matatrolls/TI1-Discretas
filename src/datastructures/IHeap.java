@@ -1,7 +1,5 @@
 package dataStructures;
 
-import java.util.ArrayList;
-
 public interface IHeap<T> {
 
     int parent(int index);

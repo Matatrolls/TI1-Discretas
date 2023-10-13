@@ -1,18 +1,17 @@
 package model;
 
-public class Task {
+public class PriorityTask extends Task {
     private String title;
     private String description;
     private String priority;
-
+    private int priorityLvl;
     private String limitDate;
 
     
-    public Task(String title, String description, String priority, String limitDate) {
-        this.title = title;
-        this.description = description;
-        this.priority = priority;
-        this.limitDate = limitDate;
+    public PriorityTask(String title, String description, String priority, String limitDate,int priorityLvl) {
+        super(title, description, priority, limitDate);
+        this.priorityLvl=priorityLvl;
+
     }
 
 
@@ -58,7 +57,17 @@ public class Task {
 
     @Override
     public String toString() {
-        return "\nTask" + title + ", description=" + description + ", priority=" + priority + ", limitDate=" + limitDate;
+        return "\nTask" + title + ", description=" + description + ", priority=" + priority +", lvl="+priorityLvl+ ", limitDate=" + limitDate;
+    }
+
+
+    public int getPriorityLvl() {
+        return priorityLvl;
+    }
+
+
+    public void setPriorityLvl(int priorityLvl) {
+        this.priorityLvl = priorityLvl;
     }
 
     
