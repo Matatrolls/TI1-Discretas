@@ -2,6 +2,8 @@ package dataStructures;
 
 import java.util.ArrayList;
 
+import model.PriorityTask;
+
 public class MaxHeap<T extends Comparable<T>> implements IHeap<T>{
     private ArrayList<T> heap;
     private ArrayList<T> list;
@@ -11,6 +13,7 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T>{
         this.heap = list;
         buildMaxHeap();
     }
+
 
     @Override
     public int parent(int index) {
@@ -118,11 +121,20 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T>{
                 msg+=heap.get(i);
             }
         }
-
-
-
-
+        if(msg.equals("")){
+            msg="\nThere are no priority task stored";
+        }
         return msg;
+    }
+
+    public int search(String tittle){
+
+        for (int i = 0; i < heap.size(); i++) {
+            String temptittle = ((PriorityTask) heap.get(i)).getTitle();
+            if(temptittle.equals(tittle))return i;
+        }
+        return 0;
+        
     }
 
 }

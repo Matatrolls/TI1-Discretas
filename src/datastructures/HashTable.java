@@ -1,6 +1,5 @@
 package dataStructures;
 
-import exceptions.DefaultException;
 
 public class HashTable<K, V> implements IHashTable<K, V> {
 
@@ -20,7 +19,6 @@ public class HashTable<K, V> implements IHashTable<K, V> {
     private static final double KNUTH =  (Math.sqrt(5) - 1) / 2.0;
     //private static final int RADIX_FACTOR = 128;
 
-    // size == m
     public HashTable(int size){
         this.size = size;
         table = new HashNode[size];
@@ -132,6 +130,9 @@ public class HashTable<K, V> implements IHashTable<K, V> {
                     msg+=print(this.table[index]);
                 }
             }
+        }
+         if(msg.equals("")){
+            msg="There aren't task registered";
         }
 
         return msg;
