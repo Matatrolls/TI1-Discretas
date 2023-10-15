@@ -14,7 +14,7 @@ public class Controller {
 
     public Controller(){
         taskQueue = new Queue<>();
-        tasksStore = new HashTable<>( 100);
+        tasksStore = new HashTable<>( 500);
         lastAction = new Stack<>();
         priorityTaskList = new ArrayList<>();
         priorityTaskQueue = new MaxHeap<>(priorityTaskList);
@@ -60,11 +60,18 @@ public class Controller {
         priorityTaskList.add(temporalPriorityTask);
     }
 
-    public String printNoPriorityTasks(){
+    public String printCommonTasks(){
 
         String msg=taskQueue.print();
         return msg;
     }
+
+     public String printPriorityTasks(){
+
+        String msg=priorityTaskQueue.print();
+        return msg;
+    }
+    
     
 
 }

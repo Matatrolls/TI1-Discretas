@@ -142,9 +142,8 @@ public class HashTable<K, V> implements IHashTable<K, V> {
 
         V  temp =current.getValue();
         msg+= temp.toString();
-        System.out.println(msg+"|||||||||||||||print");
         if(current.getNext()!= null){
-            print(current.getNext());
+            msg+=print(current.getNext());
         }
         
         return msg;

@@ -18,8 +18,6 @@ public class Executable {
 	/**
 	 * The main function creates an instance of the Executable class and calls its
 	 * menu method.
-	 * 
-	 * 
 	 */
 	public static void main(String[] args) {
 		Executable ejecutable = new Executable();
@@ -42,12 +40,100 @@ public class Executable {
 			System.out.println("\nWelcome to TaskManager");
 			System.out.println("||||||||||||||||||||||||||||||||||||||");
 			System.out.println("Choose what would you like to do:");
+			System.out.println("1. Manage tasks");
+			System.out.println("2. View tasks");
+			System.out.println("3. Undo");
+			System.out.println("10. testing");
+
+			System.out.println("0. Exit");
+
+			try {
+				option = input.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("An character was entered instead of an int");
+				System.exit(0);
+			}
+
+			switch (option) {
+
+				case 1:
+					menuManageTasks();
+					break;
+
+				case 2:
+					menuViewTask();
+					break;
+
+				case 3:
+					undo();
+					break;
+
+				case 10:
+					System.out.println("Test cases created");
+					controller.testing();
+					break;
+
+				case 0:
+					System.out.println("Thanks for using TaskManager");
+					indicator = true;
+					break;
+
+				default:
+					System.out.println("Thats not an option!");
+					break;
+			}
+		}
+	}
+
+	public void menuViewTask(){
+		boolean indicator = false;
+		int option=0;
+
+		while (!indicator) {
+			System.out.println("Choose what would you like to do:");
+			System.out.println("1. view all tasks");
+			System.out.println("2. view common tasks");
+			System.out.println("3. view priority tasks");
+			System.out.println("0. Exit");
+
+			try {
+				option = input.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("An character was entered instead of an int");
+				System.exit(0);
+			}
+
+			switch (option) {
+
+				case 1:
+					System.out.println(controller.printAllTasks());
+					break;
+				case 2:
+					System.out.println(controller.printCommonTasks());
+					break;
+
+				case 3:
+					System.out.println(controller.printPriorityTasks());
+					break;
+					
+				default:
+					System.out.println("Thats not an option!");
+				break;
+			}
+		}
+	}
+
+	public void menuManageTasks() {
+		boolean indicator = false;
+		int option = 10;
+
+		while (!indicator) {
+			System.out.println("\nWelcome to TaskManager");
+			System.out.println("||||||||||||||||||||||||||||||||||||||");
+			System.out.println("Choose what would you like to do:");
 			System.out.println("1. Store tasks and reminders");
 			System.out.println("2. Change tasks priority");
-			System.out.println("3. Undo");
-			System.out.println("4. View all tasks");
-			System.out.println("5. Check tasks");
-			System.out.println("10. testing");
+			System.out.println("3. Check tasks");
 
 			System.out.println("0. Exit");
 
@@ -69,20 +155,7 @@ public class Executable {
 					break;
 
 				case 3:
-					undo();
-					break;
-
-				case 4:
-					viewAllTask();
-					break;
-
-				case 5:
 					checkTask();
-					break;
-
-				case 10:
-					System.out.println("Test cases created");
-					controller.testing();
 					break;
 
 				case 0:
@@ -97,10 +170,6 @@ public class Executable {
 		}
 	}
 
-	private void viewAllTask() {
-		System.out.println(controller.printAllTasks());
-	}
-
 	public void undo() {
 		// buffer cleanse
 		input.nextLine();
@@ -111,13 +180,27 @@ public class Executable {
 		// buffer cleanse
 		input.nextLine();
 
-		
+		System.out.println(	controller.printPriorityTasks());
+		System.out.println("Choose wich task you want to chane the priority by title");
+		String tittleSearch="";
+		tittleSearch = input.nextLine();
+
+
+
 		controller.changeTaskPriority();
 	}
 
 	public void checkTask(){
+		// buffer cleanse
+		input.nextLine();
+
 		System.out.println(	controller.printAllTasks());
 		System.out.println("Choose wich task you want to Check by title");
+		String tittleSearch="";
+		tittleSearch = input.nextLine();
+
+		
+
 
 	}
 

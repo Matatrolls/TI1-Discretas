@@ -76,7 +76,7 @@ public class Queue<T> implements IQueue<T> {
 
         msg+= current.item.toString();
         if(current.next != null){
-            print(current.next);
+           msg+=  print(current.next);
         }
         
         return msg;
