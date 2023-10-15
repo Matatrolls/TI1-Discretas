@@ -3,15 +3,15 @@ package model;
 public class Task {
     private String title;
     private String description;
-    private String priority;
+
 
     private String limitDate;
 
     
-    public Task(String title, String description, String priority, String limitDate) {
+    public Task(String title, String description, String limitDate) {
         this.title = title;
         this.description = description;
-        this.priority = priority;
+  
         this.limitDate = limitDate;
     }
 
@@ -36,14 +36,7 @@ public class Task {
     }
 
 
-    public String getPriority() {
-        return priority;
-    }
-
-
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
+    
 
 
     public String getLimitDate() {
@@ -58,7 +51,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "\nTask" + title + ", description=" + description + ", priority=" + priority + ", limitDate=" + limitDate;
+        return "\nTask " + title + ", description=" + description + ", limitDate=" + limitDate;
     }
 
     

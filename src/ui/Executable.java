@@ -3,7 +3,6 @@ package ui;
 import java.util.*;
 
 import model.Controller;
-import exceptions.*;
 
 public class Executable {
 
@@ -20,9 +19,9 @@ public class Executable {
 	 * The main function creates an instance of the Executable class and calls its
 	 * menu method.
 	 * 
-	 * @throws EntryException
+	 * 
 	 */
-	public static void main(String[] args) throws EntryException {
+	public static void main(String[] args) {
 		Executable ejecutable = new Executable();
 		ejecutable.menu();
 	}
@@ -47,7 +46,8 @@ public class Executable {
 			System.out.println("2. Change tasks priority");
 			System.out.println("3. Undo");
 			System.out.println("4. View all tasks");
-			System.out.println("10. testeo");
+			System.out.println("5. Check tasks");
+			System.out.println("10. testing");
 
 			System.out.println("0. Exit");
 
@@ -77,10 +77,11 @@ public class Executable {
 					break;
 
 				case 5:
-					System.out.println("I missclicked sorry");
+					checkTask();
 					break;
 
 				case 10:
+					System.out.println("Test cases created");
 					controller.testing();
 					break;
 
@@ -97,7 +98,7 @@ public class Executable {
 	}
 
 	private void viewAllTask() {
-		System.out.println(	controller.printAllTasks());
+		System.out.println(controller.printAllTasks());
 	}
 
 	public void undo() {
@@ -109,13 +110,22 @@ public class Executable {
 	public void changeTaskPriority() {
 		// buffer cleanse
 		input.nextLine();
+
+		
 		controller.changeTaskPriority();
+	}
+
+	public void checkTask(){
+		System.out.println(	controller.printAllTasks());
+		System.out.println("Choose wich task you want to Check by title");
+
 	}
 
 	public void storeTasks() {
 		// buffer cleanse
 		input.nextLine();
-		String title, description, limitDate,priority="N";
+		String title, description, priority="N";
+		String limitDate="00/00/00";
 		int priorityLvl=0;
 		
 		System.out.println("Please enter your Task Title");
@@ -124,7 +134,7 @@ public class Executable {
 		System.out.println("Please enter your Task Description");
 		description = input.nextLine();
 
-		System.out.println("Please enter your limit date dd/mm/yyyy");
+		System.out.println("Please enter your limit date dd/mm/yy");
 		limitDate = input.nextLine();
 		// useless String because of changes in the integrator proyect
 
@@ -133,7 +143,8 @@ public class Executable {
 		priority = input.nextLine().toUpperCase();
 		
 		
-		System.out.println("Please enter your priority from zero to 100(zero its the lowest and default)");
+		if(priority.equals("Y")){
+			System.out.println("Please enter your priority from zero to 100(zero its the lowest and default)");
 		try {
 			priorityLvl = input.nextInt();
 
@@ -146,7 +157,8 @@ public class Executable {
 			System.out.println("An character was entered instead of an int");
 			priorityLvl=0;
 			System.out.println("Since the value was invalid it was set as default(zero)");
-	}
+		}
+		}
 
 		try {
 			controller.storeTasks(title,description,limitDate,priority,priorityLvl);

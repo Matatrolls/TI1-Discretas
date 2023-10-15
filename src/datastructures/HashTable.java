@@ -1,5 +1,6 @@
 package dataStructures;
 
+import exceptions.DefaultException;
 
 public class HashTable<K, V> implements IHashTable<K, V> {
 
@@ -33,10 +34,14 @@ public class HashTable<K, V> implements IHashTable<K, V> {
         // long key = radix128Ascii(info);
         // como los valores estaban dando demasiado grandes, se tuvo que usar el metodo hashcode
         int key = object.hashCode();
+        if(key<0){
+            key=key*(-1);
+        }
         // 3. metodo de la multiplicacion para hacer el hash
         int hash = (int) Math.floor( size * ((key * KNUTH) % 1 ) );
-
+        
         return hash;
+    
     }
     /* 
     private long radix128Ascii(String str){
@@ -124,7 +129,7 @@ public class HashTable<K, V> implements IHashTable<K, V> {
 
                 }else{
 
-                    print(this.table[index]);
+                    msg+=print(this.table[index]);
                 }
             }
         }
@@ -136,9 +141,8 @@ public class HashTable<K, V> implements IHashTable<K, V> {
         String msg="";
 
         V  temp =current.getValue();
-        msg= temp.toString();
-        System.out.println(msg);
-
+        msg+= temp.toString();
+        System.out.println(msg+"|||||||||||||||print");
         if(current.getNext()!= null){
             print(current.getNext());
         }
