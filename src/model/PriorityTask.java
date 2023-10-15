@@ -1,63 +1,22 @@
 package model;
 
-public class PriorityTask extends Task {
-    private String title;
-    private String description;
-    private String priority;
+public class PriorityTask extends Task implements Comparable<PriorityTask> {
+ 
     private int priorityLvl;
-    private String limitDate;
+
 
     
-    public PriorityTask(String title, String description, String priority, String limitDate,int priorityLvl) {
-        super(title, description, priority, limitDate);
+    public PriorityTask(String title, String description,  String limitDate,int priorityLvl) {
+        super(title, description, limitDate);
         this.priorityLvl=priorityLvl;
 
     }
 
 
-    public String getTitle() {
-        return title;
-    }
-
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-
-    public String getDescription() {
-        return description;
-    }
-
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    public String getPriority() {
-        return priority;
-    }
-
-
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
-
-    public String getLimitDate() {
-        return limitDate;
-    }
-
-
-    public void setLimitDate(String limitDate) {
-        this.limitDate = limitDate;
-    }
-
 
     @Override
     public String toString() {
-        return "\nTask" + title + ", description=" + description + ", priority=" + priority +", lvl="+priorityLvl+ ", limitDate=" + limitDate;
+        return "\nPriorTask " + getTitle() + ", description=" + getDescription() + ", lvl="+priorityLvl+ ", limitDate=" + getLimitDate();
     }
 
 
@@ -68,6 +27,16 @@ public class PriorityTask extends Task {
 
     public void setPriorityLvl(int priorityLvl) {
         this.priorityLvl = priorityLvl;
+    }
+
+
+
+    @Override
+    public int compareTo(PriorityTask o) {
+        if(this.priorityLvl < o.priorityLvl)return -1;
+        if(this.priorityLvl==o.priorityLvl)return 0;
+        if(this.priorityLvl > o.priorityLvl)return 1;
+        return 0;
     }
 
     

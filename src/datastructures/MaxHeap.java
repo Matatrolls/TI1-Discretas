@@ -108,4 +108,21 @@ public class MaxHeap<T extends Comparable<T>> implements IHeap<T>{
         }
     }
 
+    public String print(){
+        String msg="";
+
+        if(heap== null){
+            msg="There are no priority task stored";
+        }else{
+            for (int i = 0; i < heap.size(); i++) {
+                msg+=heap.get(i);
+            }
+        }
+
+
+
+
+        return msg;
+    }
+
 }
