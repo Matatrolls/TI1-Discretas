@@ -21,6 +21,7 @@ public class Executable {
 	 */
 	public static void main(String[] args) {
 		Executable ejecutable = new Executable();
+		System.out.println("\nWelcome to TaskManager");
 		ejecutable.menu();
 	}
 	// |||||||||||||||||||||||||||||||||||MENUS||||||||||||||||||||||||||||||
@@ -37,7 +38,7 @@ public class Executable {
 		int option = 10;
 
 		while (!indicator) {
-			System.out.println("\nWelcome to TaskManager");
+			
 			System.out.println("||||||||||||||||||||||||||||||||||||||");
 			System.out.println("Choose what would you like to do:");
 			System.out.println("1. Manage tasks");
@@ -69,8 +70,7 @@ public class Executable {
 					break;
 
 				case 10:
-					System.out.println("Test cases created");
-					controller.testing();
+					if(controller.testing())System.out.println("Test cases created");
 					break;
 
 				case 0:
@@ -115,6 +115,10 @@ public class Executable {
 				case 3:
 					System.out.println(controller.printPriorityTasks());
 					break;
+				case 0:
+					System.out.println("Thanks for using TaskManager");
+					indicator = true;
+					break;
 					
 				default:
 					System.out.println("Thats not an option!");
@@ -128,7 +132,6 @@ public class Executable {
 		int option = 10;
 
 		while (!indicator) {
-			System.out.println("\nWelcome to TaskManager");
 			System.out.println("||||||||||||||||||||||||||||||||||||||");
 			System.out.println("Choose what would you like to do:");
 			System.out.println("1. Store tasks and reminders");
@@ -198,10 +201,10 @@ public class Executable {
 		System.out.println("Choose wich task you want to Check by title");
 		String tittleSearch="";
 		tittleSearch = input.nextLine();
+		if(controller.checkTask(tittleSearch)){
+			System.out.println("Task Checked");
 
-		
-
-
+		}	
 	}
 
 	public void storeTasks() {

@@ -20,16 +20,18 @@ public class Controller {
         priorityTaskQueue = new MaxHeap<>(priorityTaskList);
     }
 
-    public void undo() {
+    public boolean undo() {
         lastAction.pop();
+        return true;
 
     }
 
-    public void changeTaskPriority() {
+    public boolean changeTaskPriority() {
         
+        return true;
     }
 
-    public void storeTasks(String title, String description, String limitDate, String priority,int priorityLvl) throws Exception{
+    public boolean storeTasks(String title, String description, String limitDate, String priority,int priorityLvl) throws Exception{
         if(priority.equals("Y")){
             PriorityTask temporalPriorityTask = new PriorityTask(title, description, limitDate,priorityLvl);
             tasksStore.add(title,temporalPriorityTask);
@@ -41,7 +43,7 @@ public class Controller {
             tasksStore.add(title,temporalTask);
             taskQueue.enqueue(temporalTask);
         }
-
+        return true;
     }
 
     public String printAllTasks(){
@@ -50,14 +52,23 @@ public class Controller {
         return msg;
     }
 
-    public void testing() {
+    public boolean testing() {
         Task temporalTask = new Task("test title", "test description", "00/00/01");
         tasksStore.add("test title",temporalTask);
         taskQueue.enqueue(temporalTask);
 
-        PriorityTask temporalPriorityTask = new PriorityTask("test title", "test description",  "00/00/01", 1);
-        tasksStore.add("test title",temporalPriorityTask);
-        priorityTaskList.add(temporalPriorityTask);
+        PriorityTask temporalPriorityTask1 = new PriorityTask("test title", "test description",  "00/00/01", 1);
+        tasksStore.add("test title",temporalPriorityTask1);
+        priorityTaskList.add(temporalPriorityTask1);
+
+        PriorityTask temporalPriorityTask2 = new PriorityTask("test title", "test description",  "00/00/01", 2);
+        tasksStore.add("test title",temporalPriorityTask2);
+        priorityTaskList.add(temporalPriorityTask2); 
+        
+       
+
+       
+        return true;
     }
 
     public String printCommonTasks(){
@@ -67,11 +78,15 @@ public class Controller {
     }
 
      public String printPriorityTasks(){
-
+        priorityTaskQueue.buildMaxHeap();
         String msg=priorityTaskQueue.print();
         return msg;
     }
-    
-    
 
+    public boolean checkTask(String tittle) {
+        tasksStore.delete(tittle);
+
+        return true;
+    }
+    
 }
