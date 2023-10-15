@@ -55,4 +55,30 @@ public class Queue<T> implements IQueue<T> {
 		if(isEmpty()) this.last = null;
 		return item;
 	}
+
+	public String print(){
+        String msg="";
+
+        if(this.first == null){
+            msg="There aren't task registered";
+        }
+        else{
+            if(this.first.next!=null){
+				msg+=print(this.first);
+            }
+        }
+
+        return msg;
+    }
+
+	public String print(Node <T> current){
+        String msg="";
+
+        msg+= current.item.toString();
+        if(current.next != null){
+            print(current.next);
+        }
+        
+        return msg;
+    }
 }
